@@ -19,6 +19,18 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('/books/:id should return book detail', async () => {
+    const res = await request(app).get('/books/1');
+    const bookOne = {
+      id: '1',
+      name: '1984',
+      genre: 'dystopian function',
+      url: 'https://en.wikipedia.org/wiki/Nineteen_Eighty-Four',
+      released: 1949,
+    };
+    expect(res.body).toEqual(bookOne);
+  });
+
   afterAll(() => {
     pool.end();
   });
