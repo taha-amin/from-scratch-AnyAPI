@@ -13,10 +13,10 @@ describe('backend-express-template routes', () => {
   it('/books should return a list of books', async () => {
     const res = await request(app).get('/books');
     const books = await Book.getAll();
-    const expected = books.map((book) => {
-      return { id: book.id, name: book.name };
-    });
-    expect(res.body).toEqual(expected);
+    // const expected = books.map((book) => {
+    //   return { id: book.id, name: book.name };
+    // });
+    expect(res.body).toEqual(books);
   });
 
   it('/books/:id should return book detail', async () => {
